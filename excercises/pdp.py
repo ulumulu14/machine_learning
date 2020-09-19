@@ -45,4 +45,3 @@ if __name__ == "__main__":
     model.fit(X_train, y_train)
 
     pdp(model, X_train, features)
-    plt.show()
