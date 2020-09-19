@@ -4,9 +4,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.inspection import plot_partial_dependence
 from sklearn.linear_model import LinearRegression
-from sklearn.datasets import load_iris
 from sklearn.datasets import fetch_california_housing
 
 
@@ -38,20 +36,13 @@ if __name__ == "__main__":
     X_train = pd.DataFrame({"f1" : [1, 2, 2, 4, 10], "f2" : [3, 4, 5, 1, 15], "f3" : [2, 3, 1, 3, 2]})
     y_train = [3, 4, 3, 3, 10]
     features = ["f1", "f2", "f3"]
+
     data = fetch_california_housing()
     X = pd.DataFrame(data.data, columns=data.feature_names)
     y = data.target
-    #features = data.feature_names
-
 
     model = LinearRegression()
     model.fit(X_train, y_train)
 
     pdp(model, X_train, features)
-
-    plot_partial_dependence(model, X_train, features)
-    #model.fit(X, y)
-    #pdp(model, X, features)
     plt.show()
-    #plot_partial_dependence(model, X, features)
-    #plt.show()
